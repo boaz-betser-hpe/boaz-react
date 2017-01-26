@@ -11,10 +11,11 @@ import AddRecipe from './components/AddRecipe';
 import store from './store';
 import RecipeDetails from './components/RecipeDetails';
 
-const App = ({ children }) => (
+const App = ({ children, params }) => (
   <div>
     <Header />
-    <RecipesView children={ children } />
+    <RecipesView children={ children }
+                 selected={ parseInt(params.id, 10) } />
     <Footer />
   </div>
 );

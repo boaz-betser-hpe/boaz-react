@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router';
 
-const Recipe = ({ recipe, toggleFavorite }) => (
-  <li className={ classNames('recipe', { 'favorite': recipe.favorite }) }>
+const Recipe = ({ recipe, toggleFavorite, selected }) => (
+  <li className={ classNames('recipe', { 'favorite': selected }) }>
     <Link to={ `/recipe/${ recipe.id }` }>
       { recipe.title }
     </Link>
@@ -12,7 +12,8 @@ const Recipe = ({ recipe, toggleFavorite }) => (
 
 Recipe.propTypes = {
   recipe: React.PropTypes.object.isRequired,
-  toggleFavorite: React.PropTypes.func.isRequired
+  toggleFavorite: React.PropTypes.func.isRequired,
+  selected: React.PropTypes.bool
 };
 
 export default Recipe;

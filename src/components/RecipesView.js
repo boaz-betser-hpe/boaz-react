@@ -1,11 +1,11 @@
 import React from 'react';
 import Recipes from './Recipes';
 
-const RecipesView = ({ children }) => (
+const RecipesView = ({ children, selected }) => (
   <div className="main">
 
     <div className="pane">
-      <Recipes />
+      <Recipes selected={ selected } />
     </div>
 
     <div className="pane">

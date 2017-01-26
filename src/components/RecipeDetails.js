@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const RecipeDetailsWrapper = (props) => (
-  props.recipe ? RecipeDetails(props) : <h3>Not found</h3>
-);
-
 const RecipeDetails = ({ recipe }) => (
   <div className="details">
     <h3>{ recipe.title }</h3>
@@ -13,6 +9,10 @@ const RecipeDetails = ({ recipe }) => (
       { recipe.desc }
     </div>
   </div>
+);
+
+const RecipeDetailsWrapper = (props) => (
+  props.recipe ? RecipeDetails(props) : <h3>Not found</h3>
 );
 
 RecipeDetails.propTypes = {

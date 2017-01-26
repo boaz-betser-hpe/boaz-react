@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { toggleFavorite } from '../actions/recipes';
 import { Link } from 'react-router';
 
-const Recipes = ({ recipes, toggleFavorite }) => (
+const Recipes = ({ recipes, toggleFavorite, selected }) => (
   <ul className="recipes">
     { recipes.map(recipe =>
       <Recipe key={ recipe.id }
               recipe={ recipe }
+              selected={ recipe.id === selected }
               toggleFavorite={ toggleFavorite } /> )}
 
     <li>
@@ -19,7 +20,8 @@ const Recipes = ({ recipes, toggleFavorite }) => (
 
 Recipes.propTypes = {
   recipes: React.PropTypes.array.isRequired,
-  toggleFavorite: React.PropTypes.func.isRequired
+  toggleFavorite: React.PropTypes.func.isRequired,
+  selected: React.PropTypes.number
 };
 
 const mapStateToProps = (state) => ({
