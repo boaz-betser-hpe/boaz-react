@@ -4,9 +4,9 @@ import { createStore } from 'redux';
 
 const initialState = {
   recipes: [
-    { id: getID(), title: 'Waffles', favorite: false },
-    { id: getID(), title: 'Omelette', favorite: true },
-    { id: getID(), title: 'Dog Food', favorite: true }
+    { id: getID(), title: 'Waffles',  desc: 'Baked flour' ,favorite: false },
+    { id: getID(), title: 'Omelette', desc: 'Two eggs', favorite: true },
+    { id: getID(), title: 'Dog Food', desc: 'Very expensive', favorite: true }
   ]
 };
 

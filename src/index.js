@@ -7,12 +7,14 @@ import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 import RecipesView from './components/RecipesView';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AddRecipe from './components/AddRecipe';
 import store from './store';
+import RecipeDetails from './components/RecipeDetails';
 
 const App = ({ children }) => (
   <div>
     <Header />
-    { children }
+    <RecipesView children={ children } />
     <Footer />
   </div>
 );
@@ -27,10 +29,13 @@ const NotFound = () => (
 render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
+
       <Route path="/" component={ App }>
-        <IndexRoute component={ RecipesView } />
+        <IndexRoute component={ AddRecipe } />
+        <Route path="recipe/:id" components={ RecipeDetails }/>
         <Route path="*" component={ NotFound } />
       </Route>
+
     </Router>
   </Provider>,
   document.getElementById('root')
