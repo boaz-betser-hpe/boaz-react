@@ -1,60 +1,37 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
-import { getID } from './lib/ids';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 
 import RecipesView from './components/RecipesView';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import store from './store';
 
-
-const reducer = (state, action) => {
-  console.log("Got Action " + action.type, action);
-
-  switch (action.type) {
-    case 'ADD_RECIPE':
-      const newRecipe = {
-        id: getID(),
-        title: action.title,
-        favorite: false
-      };
-
-      const newRecipes = state.recipes.concat(newRecipe);
-
-      return Object.assign({}, state, {
-        recipes: newRecipes
-      });
-
-    default:
-      return state;
-  }
-};
-
-const initialState = {
-  recipes: [
-    { id: getID(), title: 'Waffles', favorite: false },
-    { id: getID(), title: 'Omelette', favorite: true },
-    { id: getID(), title: 'Dog Food', favorite: true }
-  ]
-};
-
-const store = createStore(reducer, initialState);
-
-window.store = store;
-
-const App = () => (
+const App = ({ children }) => (
   <div>
     <Header />
-    <RecipesView />
+    { children }
     <Footer />
+  </div>
+);
+
+const NotFound = () => (
+  <div>
+    <h1>Are you lost</h1>
+    <Link to="/legal">Go to legal</Link>
   </div>
 );
 
 render(
   <Provider store={ store }>
-    <App />
+    <Router history={ browserHistory }>
+      <Route path="/" component={ App }>
+        <IndexRoute component={ RecipesView } />
+        <Route path="*" component={ NotFound } />
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
