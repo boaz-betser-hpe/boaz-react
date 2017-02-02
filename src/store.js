@@ -1,7 +1,9 @@
 import reducer from './reducers/root';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import logMiddleware from './middleware/log';
+import apiMiddleware from './middleware/api';
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(logMiddleware, apiMiddleware));
 
 window.store = store;
 

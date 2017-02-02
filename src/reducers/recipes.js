@@ -1,4 +1,4 @@
-import { ADD_RECIPE, TOGGLE_RECIPES } from '../consts/action-types';
+import { ADD_RECIPE, TOGGLE_RECIPES, SET_RECIPES } from '../consts/action-types';
 import { getID } from '../lib/ids';
 
 const initialState = [
@@ -24,9 +24,22 @@ const reducer = (recipes = initialState, action) => {
           : Object.assign({}, recipe, { favorite: !recipe.favorite })
       );
 
+    case SET_RECIPES:
+      return action.payload;
+
     default:
       return recipes;
   }
 };
 
 export default reducer;
+
+
+
+
+
+
+
+
+
+
