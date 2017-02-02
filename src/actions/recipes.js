@@ -1,4 +1,4 @@
-import { ADD_RECIPE, TOGGLE_RECIPES, SET_RECIPES } from '../consts/action-types';
+import { ADD_RECIPE, TOGGLE_RECIPES, SET_RECIPES, FETCH_RECIPES } from '../consts/action-types';
 
 export const addRecipe = (id, title, desc) => ({
   type: ADD_RECIPE,
@@ -17,4 +17,8 @@ export const toggleFavorite = (id) => ({
 export const setRecipes = (payload) => ({
   type: SET_RECIPES,
   payload
+});
+
+export const fetchRecipes = () => ({
+  type: FETCH_RECIPES
 });

@@ -4,21 +4,10 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 
-import RecipesView from './components/RecipesView';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import App from './components/App';
 import AddRecipe from './components/AddRecipe';
 import store from './store';
 import RecipeDetails from './components/RecipeDetails';
-
-const App = ({ children, params }) => (
-  <div>
-    <Header />
-    <RecipesView children={ children }
-                 selected={ parseInt(params.id, 10) } />
-    <Footer />
-  </div>
-);
 
 const NotFound = () => (
   <div>

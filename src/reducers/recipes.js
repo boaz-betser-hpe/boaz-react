@@ -1,11 +1,6 @@
 import { ADD_RECIPE, TOGGLE_RECIPES, SET_RECIPES } from '../consts/action-types';
-import { getID } from '../lib/ids';
 
-const initialState = [
-  { id: getID(), title: 'Waffles',  desc: 'Baked flour' ,favorite: false },
-  { id: getID(), title: 'Omelette', desc: 'Two eggs', favorite: true },
-  { id: getID(), title: 'Dog Food', desc: 'Very expensive', favorite: true }
-];
+const initialState = [];
 
 const reducer = (recipes = initialState, action) => {
   switch (action.type) {
