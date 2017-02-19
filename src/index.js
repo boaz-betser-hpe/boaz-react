@@ -2,15 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const Header = () => (
-  <h1>Recipes:</h1>
-);
+import Header from './components/Header';
+import Recipes from './components/Recipes';
+import AddRecipe from './components/AddRecipe';
 
-const Recipe = ({ title }) => (
-  <li>{ title }</li>
-);
-
-class Recipes extends React.Component {
+class App extends React.Component {
 
   constructor() {
     super();
@@ -22,48 +18,24 @@ class Recipes extends React.Component {
     };
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-
-    console.log('Yey!! ' + this.title.value);
-
+  addRecipe = (title) => {
     this.setState({
-      recipes: this.state.recipes.concat(this.title.value)
+      recipes: this.state.recipes.concat(title)
     });
-
-    this.title.value = '';
   };
 
   render() {
     return (
       <div>
-        <ul>
-          {
-            this.state.recipes.map(recipe => <Recipe
-              title={ recipe }
-              key={ recipe }/>)
-          }
-        </ul>
-
-        <form onSubmit={ this.handleSubmit }>
-          <input ref={ (elem) => this.title = elem } type="text"/>
-          <button>Add</button>
-        </form>
+        <div>
+          <Header total={ this.state.recipes.length } />
+          <Recipes recipes={ this.state.recipes } />
+          <AddRecipe cb={ this.addRecipe } />
+        </div>
       </div>
     );
   }
 }
-
-const App = () => (
-  <div>
-    <div>
-      <Header />
-      <Recipes />
-    </div>
-  </div>
-);
-
-window.App = App;
 
 ReactDOM.render(
   <App />,
