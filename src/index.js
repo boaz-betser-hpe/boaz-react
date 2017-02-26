@@ -6,7 +6,6 @@ import RecipesView from './components/RecipesView';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AddRecipe from './components/AddRecipe';
-import RecipeDetails from './components/RecipeDetails';
 
 import store from './store';
 import { Router, Route, browserHistory, Link } from 'react-router';
@@ -32,7 +31,6 @@ render(
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
         <Route path="add" component={ AddRecipe } />
-        <Route path=":id" component={ RecipeDetails }/>
       </Route>
       <Route path="*" component={ NotFound } />
     </Router>
