@@ -1,17 +1,16 @@
-import { BASE_URL } from '../consts/env';
-import { API } from '../consts/action-types';
+import { SET_RECIPES } from '../consts/action-types';
 
 const apiMiddleware = ({ dispatch }) => next => action => {
-  if (action.type !== API) {
-    return next(action);
+  if (action.type === 'FETCH_RECIPES') {
+
+    return fetch('https://s3.amazonaws.com/500tech-shared/recipes.json')
+      .then(response => response.json())
+      .then(data => dispatch({ type: SET_RECIPES, data }))
+      .catch(error => console.log(`Network error:`, error));
   }
 
-  const { url, success } = action.payload;
+    return next(action);
 
-  return fetch(BASE_URL + url)
-    .then(response => response.json())
-    .then(payload => dispatch({ type: success, payload }))
-    .catch(error => console.log(`Network error:`, error));
 };
 
 export default apiMiddleware;

@@ -25,7 +25,7 @@ const reducer = (recipes = initialState, action) => {
       );
 
     case SET_RECIPES:
-      return action.payload;
+      return action.data;
 
     default:
       return recipes;
