@@ -4,7 +4,7 @@ import classNames from 'classnames';
 const Recipe = ({ recipe, toggleFavorite }) => (
   <li className={ classNames('recipe', { 'favorite': recipe.favorite }) }
       onClick={ () => toggleFavorite(recipe.id) } >
-    { recipe.title }
+    { recipe.title } ({ recipe.desc })
   </li>
 );
 

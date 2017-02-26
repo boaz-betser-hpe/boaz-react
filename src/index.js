@@ -18,6 +18,7 @@ const reducer = (state, action) => {
       const newRecipe = {
         id: getID(),
         title: action.title,
+        desc: action.desc,
         favorite: false
       };
 
@@ -47,9 +48,9 @@ const reducer = (state, action) => {
 
 const initialState = {
   recipes: [
-    { id: getID(), title: 'Waffles', favorite: false },
-    { id: getID(), title: 'Omelette', favorite: true },
-    { id: getID(), title: 'Dog Food', favorite: true }
+    { id: getID(), title: 'Waffles',  desc: 'Good an healthy', favorite: false },
+    { id: getID(), title: 'Omelette', desc: 'Basically two eggs', favorite: true },
+    { id: getID(), title: 'Dog Food', desc: 'Not for people', favorite: true }
   ]
 };
 
